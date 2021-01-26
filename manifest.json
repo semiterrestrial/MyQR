@@ -5,7 +5,7 @@
   "background_color": "#2196f3",
   "display": "fullscreen",
   "scope": "https://semiterrestrial.github.io/MyQR/",
-  "start_url": "index.html",
+  "start_url": "https://semiterrestrial.github.io/MyQR/index.html",
   "icons": [
     {
       "src": "icon192.png",
