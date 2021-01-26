@@ -13,6 +13,7 @@ self.addEventListener("install", (event) => {
       // response isn't fulfilled from the HTTP cache; i.e., it will be from
       // the network.
       await cache.add(new Request(OFFLINE_URL, { cache: "reload" }));
+      console.log("worker has cached offline page")
     })()
   );
   // Force the waiting service worker to become the active service worker.
@@ -21,12 +22,14 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   // Tell the active service worker to take control of the page immediately.
+  console.log("worker activated")
   self.clients.claim();
 });
 
 self.addEventListener("fetch", (event) => {
   // We only want to call event.respondWith() if this is a navigation request
   // for an HTML page.
+  console.log("worker will return offline page")
   if (event.request.mode === "navigate") {
     event.respondWith(
       (async () => {
